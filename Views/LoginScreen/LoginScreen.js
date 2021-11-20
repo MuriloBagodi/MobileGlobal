@@ -9,6 +9,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [singUpError, setSignupError] = useState("");
 
   const navigation = useNavigation();
 
@@ -84,6 +85,7 @@ const LoginScreen = () => {
         </TouchableOpacity>
       </View>
       {loginError ? <ErrorMessage error={loginError} visible={true} /> : null}
+      {singUpError ? <ErrorMessage error={loginError} visible={true} /> : null}
     </KeyboardAvoidingView>
   );
 };

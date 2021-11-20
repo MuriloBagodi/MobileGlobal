@@ -3,6 +3,19 @@ import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { auth } from "../../firebase";
 import { useNavigation } from "@react-navigation/core";
+import { Accordion, Block, Button } from "galio-framework";
+
+const data = [
+  {
+    title: "Torneira Banheiro 1",
+    content: "Gasto de 18L Por Dia",
+  },
+  { title: "Torneira Banheiro 2", content: "Gasto de 18L Por Dia" },
+  { title: "Torneira Banheiro 3", content: "Gasto de 1L Por Dia" },
+  { title: "Torneira Banheiro 4", content: "Gasto de 6L Por Dia" },
+  { title: "Torneira Banheiro 5", content: "Gasto de 8L Por Dia" },
+  { title: "Torneira Banheiro 6", content: "Gasto de 10L Por Dia" },
+];
 
 const Home = () => {
   const navigation = useNavigation();
@@ -16,11 +29,16 @@ const Home = () => {
     <>
       <View style={styles.container}>
         <View style={styles.Row}>
-            
+          <Block style={{ height: 200, paddingTop: 10 }}>
+            <Text>Gastos Diarios: </Text>
+            <Accordion dataArray={data} />
+          </Block>
         </View>
         <View style={styles.Row}>
-          <TouchableOpacity style={styles.buttonExit} onPress={handleSingOut}>
-            <Text style={styles.txt}>Sair</Text>
+          <TouchableOpacity onPress={handleSingOut}>
+            <Button color="#FF0073" shadowless>
+              Sair
+            </Button>
           </TouchableOpacity>
         </View>
       </View>
@@ -33,22 +51,26 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "blue",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
   },
   buttonExit: {
-    width: '100%',
+    width: "100%",
     backgroundColor: "red",
-    margin: 10,
     padding: 20,
     borderRadius: 15,
+    textAlign: "center",
+    justifyContent: "center",
   },
   txt: {
     color: "#fafafa",
   },
-  Row:{
-    flexDirection: 'row',
-    backgroundColor: "black",
-    justifyContent: 'center',
-    width: '100%'
-  }
+  Row: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "100%",
+    textAlign: "center",
+    alignItems: "center",
+  },
 });
